@@ -1,0 +1,19 @@
+.DrawerToggle {
+	cursor: pointer;
+	position: relative;
+}
+
+.DrawerToggle::before {
+	content: "";
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	display: block;
+	width: 58px;
+	height: 58px;
+}
+
+.DrawerToggle > img {
+	display: block;
+	width: 24px;
+}
