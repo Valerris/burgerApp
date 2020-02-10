@@ -5,6 +5,18 @@
     "cheese": 0,
     "meat": 0
   },
+  "users": [
+    {
+      "email": "user1@email.com",
+      "password": "$2a$10$nCsuAxMBTEoD/hZ3EvBM0ucXYHuDI0YJ7y7dHMOiE3N5ezhxqCnNC",
+      "id": 1
+    },
+    {
+      "email": "user2@email.com",
+      "password": "$2a$10$NqWT8dydn5nLN.O6EQA1/uy.aLom1rQyiNIyVSGJEsvwYsFey3RaC",
+      "id": 2
+    }
+  ],
   "orders": [
     {
       "ingredients": {
@@ -14,36 +26,32 @@
         "meat": 1
       },
       "price": 6.9,
-      "customer": {
-        "name": "Max",
-        "address": {
-          "street": "That one street 1",
-          "zipCode": 12345,
-          "country": "Canada"
-        },
-        "email": "test@test.com"
+      "orderData": {
+        "name": "Test Name",
+        "street": "Test Street",
+        "zipCode": "12345",
+        "country": "Test Country",
+        "email": "test@email.test",
+        "deliveryMethod": "fastest"
       },
-      "deliveryMethod": "fastest",
       "id": 1
     },
     {
       "ingredients": {
-        "salad": 2,
-        "bacon": 3,
-        "cheese": 4,
-        "meat": 5
+        "salad": 1,
+        "bacon": 1,
+        "cheese": 1,
+        "meat": 1
       },
-      "price": 15.200000000000005,
-      "customer": {
-        "name": "Max",
-        "address": {
-          "street": "That one street 1",
-          "zipCode": 12345,
-          "country": "Canada"
-        },
-        "email": "test@test.com"
+      "price": 6.9,
+      "orderData": {
+        "name": "asdgsadg",
+        "street": "fagsfgag",
+        "zipCode": "12315",
+        "country": "fsadfsadf",
+        "email": "sadgasd@adg.dfhsd",
+        "deliveryMethod": "fastest"
       },
-      "deliveryMethod": "fastest",
       "id": 2
     },
     {
@@ -55,112 +63,50 @@
       },
       "price": 6.9,
       "orderData": {
-        "name": "Test name",
-        "street": "Test street",
+        "name": "user1 name",
+        "street": "user1 street",
         "zipCode": "12345",
-        "country": "US",
-        "email": "test@test.com",
-        "deliveryMethod": "cheapest"
+        "country": "user1 country",
+        "email": "user1@email.com",
+        "deliveryMethod": "fastest"
       },
       "id": 3
     },
     {
-      "ingredients": {},
-      "price": 0,
+      "ingredients": {
+        "salad": 2,
+        "bacon": 2,
+        "cheese": 2,
+        "meat": 2
+      },
+      "price": 9.8,
       "orderData": {
-        "name": "a",
-        "street": "b",
+        "name": "user2 name",
+        "street": "user2 street",
         "zipCode": "12345",
-        "country": "c",
-        "email": "d@e.f",
-        "deliveryMethod": "cheapest"
+        "country": "user2 country",
+        "email": "user2@email.com",
+        "deliveryMethod": "fastest"
       },
       "id": 4
     },
     {
       "ingredients": {
-        "salad": 1,
-        "bacon": 0,
-        "cheese": 0,
-        "meat": 0
+        "salad": 3,
+        "bacon": 4,
+        "cheese": 3,
+        "meat": 2
       },
-      "price": 4.5,
+      "price": 12.1,
       "orderData": {
-        "name": "a",
-        "street": "b",
+        "name": "user1 name",
+        "street": "user1 street",
         "zipCode": "12345",
-        "country": "c",
-        "email": "d@e.f",
-        "deliveryMethod": ""
+        "country": "user1 country",
+        "email": "user1@email.com",
+        "deliveryMethod": "fastest"
       },
       "id": 5
-    },
-    {
-      "ingredients": {
-        "salad": 1,
-        "bacon": 0,
-        "cheese": 0,
-        "meat": 0
-      },
-      "price": 4.5,
-      "orderData": {
-        "name": "a",
-        "street": "b",
-        "zipCode": "12345",
-        "country": "c",
-        "email": "d@e.f",
-        "deliveryMethod": "fastest"
-      },
-      "id": 6
-    },
-    {
-      "ingredients": {
-        "salad": 1,
-        "bacon": 1,
-        "cheese": 1,
-        "meat": 1
-      },
-      "price": 6.9,
-      "orderData": {
-        "name": "t",
-        "street": "a",
-        "zipCode": "31254",
-        "country": "erwg",
-        "email": "erwgwegr@g",
-        "deliveryMethod": "fastest"
-      },
-      "id": 7
-    },
-    {
-      "ingredients": {},
-      "price": 4.5,
-      "orderData": {
-        "name": "asv",
-        "street": "fvadv",
-        "zipCode": "12345",
-        "country": "svebsd",
-        "email": "asdv@asgsa.fnfn",
-        "deliveryMethod": "fastest"
-      },
-      "id": 8
-    },
-    {
-      "ingredients": {
-        "salad": 1,
-        "bacon": 1,
-        "cheese": 3,
-        "meat": 1
-      },
-      "price": 7.700000000000001,
-      "orderData": {
-        "name": "wafawefsdf",
-        "street": "waefawefwa",
-        "zipCode": "12134",
-        "country": "asfs",
-        "email": "sdvseva@dshdsfh.ghmjgfh",
-        "deliveryMethod": "fastest"
-      },
-      "id": 9
     }
   ]
 }

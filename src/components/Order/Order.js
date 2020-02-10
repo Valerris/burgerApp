@@ -32,15 +32,16 @@ const order = props => {
 		<div className={classes.Order}>
 			<p>
 				<b>Ingredients:</b>
-				<div
-					style={{
-						display: "flex",
-						flexWrap: "wrap"
-					}}
-				>
-					{ingredientsOutput}
-				</div>
 			</p>
+			<div
+				style={{
+					display: "flex",
+					flexWrap: "wrap"
+				}}
+			>
+				{ingredientsOutput}
+			</div>
+
 			<p>
 				Price: <strong>USD {Number.parseFloat(props.price).toFixed(2)}</strong>
 			</p>

@@ -28,7 +28,13 @@ const withErrorHandler = (WrappedComponent, axios) => {
 
 		// static getDerivedStateFromError(err) {
 		// 	console.log("catched error");
+		// 	this.setState({ error: err });
 		// 	return { error: err };
+		// }
+
+		// componentDidCatch(err) {
+		// 	console.log("catched error");
+		// 	this.setState({ error: err });
 		// }
 
 		errorConfirmedHandler = () => {

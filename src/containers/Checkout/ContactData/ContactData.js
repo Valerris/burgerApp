@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import Button from "../../../components/UI/Button/Button";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import Input from "../../../components/UI/Input/Input";
+import withErrorHandler from "../../../hoc/withErrorHandler/withErrorHandler";
+import * as actions from "../../../store/actions/index";
+import { updateObject, checkValidity } from "../../../shared/utility";
 
 import classes from "./ContactData.module.css";
 
@@ -96,14 +99,11 @@ class ContactData extends Component {
 				valid: true
 			}
 		},
-		formIsValid: false,
-		loading: false
+		formIsValid: false
 	};
 
 	orderHandler = e => {
 		e.preventDefault();
-
-		this.setState({ loading: true });
 
 		const formData = {};
 
@@ -117,57 +117,22 @@ class ContactData extends Component {
 			orderData: formData
 		};
 
-		fetch("http://localhost:3001/orders", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json;charset=utf-8"
-			},
-			body: JSON.stringify(order)
-		})
-			.then(response => {
-				this.setState({ loading: false });
-				this.props.history.push("/");
-				console.log(response);
-			})
-			.catch(err => {
-				this.setState({ loading: false });
-				console.log(err);
-			});
+		this.props.onOrderHandler(order, this.props.token);
 	};
 
-	checkValidity(value, rules) {
-		let isValid = true;
-
-		if (rules.required) {
-			isValid = value.trim() !== "" && isValid;
-		}
-
-		if (rules.minLength) {
-			isValid = value.length >= rules.minLength && isValid;
-		}
-
-		if (rules.maxLength) {
-			isValid = value.length <= rules.maxLength && isValid;
-		}
-
-		return isValid;
-	}
-
 	inputChangedHandler = (e, inputId) => {
-		const updatedOrderForm = { ...this.state.orderForm };
+		const updatedFormEl = updateObject(this.state.orderForm[inputId], {
+			value: e.target.value,
+			valid: checkValidity(
+				e.target.value,
+				this.state.orderForm[inputId].validation
+			),
+			touched: true
+		});
 
-		const updatedFormEl = { ...updatedOrderForm[inputId] };
-
-		updatedFormEl.value = e.target.value;
-
-		updatedFormEl.valid = this.checkValidity(
-			updatedFormEl.value,
-			updatedFormEl.validation
-		);
-
-		updatedFormEl.touched = true;
-
-		updatedOrderForm[inputId] = updatedFormEl;
+		const updatedOrderForm = updateObject(this.state.orderForm, {
+			[inputId]: updatedFormEl
+		});
 
 		let formIsValid = true;
 
@@ -208,7 +173,7 @@ class ContactData extends Component {
 			</form>
 		);
 
-		if (this.state.loading) {
+		if (this.props.loading) {
 			form = <Spinner />;
 		}
 
@@ -222,8 +187,18 @@ class ContactData extends Component {
 }
 
 const mapStateToProps = state => ({
-	ings: state.ingredients,
-	price: state.totalPrice
+	ings: state.burgerBuilder.ingredients,
+	price: state.burgerBuilder.totalPrice,
+	loading: state.order.loading,
+	token: state.auth.token
 });
 
-export default connect(mapStateToProps)(ContactData);
+const mapDispatchToProps = dispatch => ({
+	onOrderHandler: (orderData, token) =>
+		dispatch(actions.purchaseBurger(orderData, token))
+});
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(withErrorHandler(ContactData, null));
